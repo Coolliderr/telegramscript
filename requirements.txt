@@ -1,8 +1,8 @@
-fastapi
-uvicorn
-pydantic
-telethon
-python-dotenv
-redis
-httpx
-aiogram==3.*
+fastapi    // Version: 0.115.14
+uvicorn    // Version: 0.33.0
+pydantic    // Version: 2.8.2
+telethon    // Version: 1.40.0
+python-dotenv    //Version: 1.0.1
+redis    // Version: 6.1.1
+httpx    // Version: 0.28.1
+aiogram==3.*    // Version: 3.13.1
