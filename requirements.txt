@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pydantic
+telethon
+python-dotenv
+redis
+httpx
+aiogram==3.*
