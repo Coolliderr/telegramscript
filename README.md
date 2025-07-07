@@ -17,7 +17,12 @@ pip install fastapi uvicorn pydantic telethon python-dotenv redis httpx "aiogram
 
 3✅、开启pm2脚本自动运行（开启后关闭服务器依然运行）
 ```bash
-sudo npm install -g pm2
+curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+apt install -y nodejs
+node -v
+npm -v
+npm install -g pm2
+
 pm2 start bot.py --name telegram-bot
 pm2 start main.py --name telegram-api
 pm2 start login.py --name telegram-login-api
