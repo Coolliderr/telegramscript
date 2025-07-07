@@ -25,6 +25,15 @@ pm2 save
 pm2 startup
 ```
 
+3✅、开启redis服务，这个用于存储验证码hash
+```bash
+apt update
+apt install redis-server -y
+systemctl start redis
+systemctl enable redis
+ss -tunlp | grep 6379
+```
+
 4✅、脚本重启（如果修改了代码）
 ```bash
 pm2 restart telegram-bot
