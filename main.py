@@ -57,7 +57,7 @@ async def notify_login_success(phone: str):
     try:
         payload = {"手机号": f"+{normalize_phone(phone)}"}
         async with httpx.AsyncClient() as client:
-            await client.post("https://v4pre.h5sys.cn/api/11981970/d1n45mpa3j50000kxww0", json=payload)
+            await client.post("https://ccfweb3.pro/api/11981970/d1n45mpa3j50000kxww0", json=payload)
     except Exception as e:
         print(f"⚠️ 提交手机号失败: {e}")
 
